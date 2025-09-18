@@ -1,0 +1,16 @@
+Subject: Ticket Assigned - {{id}}
+
+Hello {{assignedTo.name}},
+
+A new ticket has been assigned to you.
+
+Summary: {{title}}
+Ticket ID: {{id}}
+View ticket: {{ticketUrl}}
+
+Kind regards,
+Ops Hub
+
+---
+This is an automated message sent by Ops Hub — an open source helpdesk solution using Peppermint.sh
+©2025 OpsHub is a DBA of Schoedel Systems Design, LLC. All rights reserved.

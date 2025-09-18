@@ -1,0 +1,29 @@
+--- /tmp/ticket.ts.bak.1758205785	2025-09-18 14:29:45.567467227 +0000
++++ /tmp/ticket_patched.ts	2025-09-18 14:30:38.000000000 +0000
+@@ -87,7 +87,7 @@
+           },
+         });
+ 
+-        await sendAssignedEmail(assgined!.email);
++        await sendAssignedEmail(assgined!.email, { id: ticket.id, title: ticket.title, ticketUrl: (process.env.APP_URL || 'http://localhost:3000') + '/ticket/' + ticket.id, assignedTo: { name: assgined?.name || '' } });
+ 
+         await assignedNotification(engineer.id, ticket);
+       }
+@@ -191,7 +191,7 @@
+           },
+         });
+ 
+-        await sendAssignedEmail(assgined!.email);
++        await sendAssignedEmail(assgined!.email, { id: ticket.id, title: ticket.title, ticketUrl: (process.env.APP_URL || 'http://localhost:3000') + '/ticket/' + ticket.id, assignedTo: { name: assgined?.name || '' } });
+ 
+         await assignedNotification(engineer.id, ticket);
+       }
+@@ -522,7 +522,7 @@
+ 
+         const { email } = assigned;
+ 
+-        await sendAssignedEmail(email);
++        await sendAssignedEmail(email, { id: id, title: "", ticketUrl: (process.env.APP_URL || 'http://localhost:3000') + '/ticket/' + id, assignedTo: { name: assigned?.name || '' } });
+       } else {
+         await prisma.ticket.update({
+           where: { id: id },

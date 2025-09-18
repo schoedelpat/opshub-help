@@ -1,0 +1,16 @@
+diff --git a/apps/api/src/lib/nodemailer/ticket/assigned.ts b/apps/api/src/lib/nodemailer/ticket/assigned.ts
+index 0000000..0000000 100644
+--- a/apps/api/src/lib/nodemailer/ticket/assigned.ts
++++ b/apps/api/src/lib/nodemailer/ticket/assigned.ts
+@@
+ -var template = handlebars.compile(testhtml?.html);
+ -var htmlToSend = template({});
+ +var template = handlebars.compile(testhtml?.html);
+ +// Build replacements safely using ticket data if available
+ +const replacements = {
+ +  id: (typeof ticket !== 'undefined' && ticket?.id) ? ticket.id : '',
+ +  title: (typeof ticket !== 'undefined' && ticket?.title) ? ticket.title : '',
+ +  ticketUrl: `${process.env.BASE_URL || ''}/ticket/${(typeof ticket !== 'undefined' && ticket?.id) ? ticket.id : ''}`,
+ +  assignedTo: { name: (typeof ticket !== 'undefined' && ticket?.assignedTo && ticket.assignedTo.name) ? ticket.assignedTo.name : '' }
+ +};
+ +var htmlToSend = template(replacements);
